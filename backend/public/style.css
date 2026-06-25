@@ -1,0 +1,230 @@
+/* ==========================
+   GENERAL
+========================== */
+
+body{
+    background: #eef4ff;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* ==========================
+   NAVBAR
+========================== */
+
+.navbar{
+    background: linear-gradient(
+        90deg,
+        #0066ff,
+        #00b4d8
+    ) !important;
+
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.navbar-brand{
+    font-size:1.3rem;
+    font-weight:700;
+}
+
+.nav-link{
+    color:white !important;
+    font-weight:500;
+}
+
+.nav-link:hover{
+    transform:translateY(-2px);
+    opacity:0.9;
+}
+
+/* ==========================
+   PAGE TITLES
+========================== */
+
+h2{
+    font-weight:700;
+    color:#1e293b;
+}
+
+h5{
+    color:#334155;
+}
+
+/* ==========================
+   DASHBOARD CARDS
+========================== */
+
+.stat-card{
+    border:none;
+    border-radius:20px;
+    color:white;
+    overflow:hidden;
+    transition:0.3s;
+}
+
+.stat-card:hover{
+    transform:translateY(-6px);
+}
+
+.stat-card:nth-child(1){
+    background:linear-gradient(135deg,#4361ee,#4895ef);
+}
+
+.card:nth-child(1){
+    border-radius:20px;
+}
+
+/* Individual Colors */
+
+.col-md-3:nth-child(1) .stat-card{
+    background:linear-gradient(135deg,#4361ee,#4895ef);
+}
+
+.col-md-3:nth-child(2) .stat-card{
+    background:linear-gradient(135deg,#06d6a0,#1b9aaa);
+}
+
+.col-md-3:nth-child(3) .stat-card{
+    background:linear-gradient(135deg,#ff9f1c,#ffbf69);
+}
+
+.col-md-3:nth-child(4) .stat-card{
+    background:linear-gradient(135deg,#ef476f,#ff5d8f);
+}
+
+.stat-card h2{
+    color:white;
+    font-size:2rem;
+    font-weight:700;
+}
+
+.stat-card h6{
+    color:white;
+    opacity:0.9;
+}
+
+/* ==========================
+   NORMAL CARDS
+========================== */
+
+.card{
+    border:none;
+    border-radius:18px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
+
+/* ==========================
+   TABLES
+========================== */
+
+.table{
+    border-radius:15px;
+    overflow:hidden;
+}
+
+.table thead{
+    background:#2563eb;
+    color:white;
+}
+
+.table-hover tbody tr:hover{
+    background:#dbeafe;
+}
+
+/* ==========================
+   BUTTONS
+========================== */
+
+.btn{
+    border-radius:10px;
+    font-weight:600;
+}
+
+.btn-success{
+    background:#10b981;
+    border:none;
+}
+
+.btn-primary{
+    background:#2563eb;
+    border:none;
+}
+
+.btn-warning{
+    color:white;
+    border:none;
+}
+
+.btn-danger{
+    border:none;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+}
+
+/* ==========================
+   FORMS
+========================== */
+
+.form-control{
+    border-radius:10px;
+    padding:10px;
+}
+
+.form-control:focus{
+    border-color:#2563eb;
+    box-shadow:0 0 0 3px rgba(37,99,235,0.15);
+}
+
+/* ==========================
+   CHART CARDS
+========================== */
+
+canvas{
+    max-height:350px;
+}
+
+/* ==========================
+   SECTIONS
+========================== */
+
+.container,
+.container-fluid{
+    padding-bottom:40px;
+}
+
+/* ==========================
+   CUSTOM HEADER STRIP
+========================== */
+
+.dashboard-banner{
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #06b6d4
+    );
+
+    color:white;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    margin-bottom:25px;
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media(max-width:768px){
+
+    .stat-card{
+        margin-bottom:15px;
+    }
+
+    h2{
+        text-align:center;
+    }
+
+}
