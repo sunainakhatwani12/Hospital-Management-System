@@ -1,185 +1,304 @@
+/* ==========================================================
+   DASHBOARD THEME — "Aurora Glass"
+   A refined admin dashboard aesthetic: deep indigo → teal
+   accent system, glassmorphic surfaces, soft layered depth.
+   ========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+:root{
+    /* ---- Color tokens ---- */
+    --ink-900:#0f1729;
+    --ink-700:#334155;
+    --ink-500:#64748b;
+
+    --brand-1:#4338ca;   /* indigo   */
+    --brand-2:#0891b2;   /* teal     */
+    --brand-3:#7c3aed;   /* violet   */
+
+    --accent-blue:#4361ee;
+    --accent-teal:#0d9488;
+    --accent-amber:#d97706;
+    --accent-rose:#e11d48;
+
+    --surface:#ffffff;
+    --surface-tint:#f4f7ff;
+    --bg-canvas:#eef2fb;
+    --border-soft:rgba(15,23,41,0.07);
+
+    /* ---- Elevation ---- */
+    --shadow-sm:0 2px 8px rgba(15,23,41,0.06);
+    --shadow-md:0 10px 30px rgba(15,23,41,0.08);
+    --shadow-lg:0 20px 45px rgba(15,23,41,0.14);
+    --shadow-glow:0 0 0 1px rgba(255,255,255,0.4) inset;
+}
+
 /* ==========================
    GENERAL
 ========================== */
-
 body{
-    background: #eef4ff;
-    font-family: 'Segoe UI', sans-serif;
+    background:
+        radial-gradient(circle at 12% 8%, rgba(67,56,202,0.07), transparent 42%),
+        radial-gradient(circle at 88% 0%, rgba(8,145,178,0.08), transparent 45%),
+        var(--bg-canvas);
+    font-family:'Inter', 'Segoe UI', sans-serif;
+    color:var(--ink-700);
+    letter-spacing:0.1px;
 }
 
 /* ==========================
    NAVBAR
 ========================== */
-
 .navbar{
-    background: linear-gradient(
-        90deg,
-        #0066ff,
-        #00b4d8
-    ) !important;
-
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    background:
+        linear-gradient(100deg, var(--brand-1) 0%, var(--brand-3) 52%, var(--brand-2) 100%) !important;
+    box-shadow:0 8px 24px rgba(67,56,202,0.25);
+    padding-top:14px;
+    padding-bottom:14px;
+    backdrop-filter:blur(6px);
 }
-
 .navbar-brand{
-    font-size:1.3rem;
+    font-family:'Sora', sans-serif;
+    font-size:1.35rem;
     font-weight:700;
+    letter-spacing:0.2px;
 }
-
+.navbar-brand::before{
+    content:"";
+    display:inline-block;
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    background:#5eead4;
+    margin-right:9px;
+    box-shadow:0 0 0 4px rgba(94,234,212,0.25);
+}
 .nav-link{
-    color:white !important;
+    color:rgba(255,255,255,0.88) !important;
     font-weight:500;
+    position:relative;
+    transition:all 0.25s ease;
 }
-
+.nav-link::after{
+    content:"";
+    position:absolute;
+    left:0; bottom:-2px;
+    width:0%;
+    height:2px;
+    background:#5eead4;
+    transition:width 0.25s ease;
+}
 .nav-link:hover{
+    color:#ffffff !important;
     transform:translateY(-2px);
-    opacity:0.9;
+    opacity:1;
+}
+.nav-link:hover::after{
+    width:100%;
 }
 
 /* ==========================
    PAGE TITLES
 ========================== */
-
 h2{
+    font-family:'Sora', sans-serif;
     font-weight:700;
-    color:#1e293b;
+    color:var(--ink-900);
+    letter-spacing:-0.3px;
 }
-
 h5{
-    color:#334155;
+    font-family:'Sora', sans-serif;
+    font-weight:600;
+    color:var(--ink-700);
 }
 
 /* ==========================
-   DASHBOARD CARDS
+   DASHBOARD CARDS (stat tiles)
 ========================== */
-
 .stat-card{
     border:none;
-    border-radius:20px;
+    border-radius:22px;
     color:white;
     overflow:hidden;
-    transition:0.3s;
+    position:relative;
+    isolation:isolate;
+    box-shadow:var(--shadow-md);
+    transition:transform 0.35s cubic-bezier(.2,.8,.2,1), box-shadow 0.35s ease;
 }
-
+.stat-card::before{
+    /* subtle sheen overlay for depth */
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(160deg, rgba(255,255,255,0.22), rgba(255,255,255,0) 45%);
+    z-index:1;
+    pointer-events:none;
+}
+.stat-card::after{
+    /* soft glow orb */
+    content:"";
+    position:absolute;
+    width:140px;
+    height:140px;
+    right:-40px;
+    bottom:-50px;
+    background:rgba(255,255,255,0.14);
+    border-radius:50%;
+    z-index:0;
+}
 .stat-card:hover{
-    transform:translateY(-6px);
+    transform:translateY(-8px) scale(1.015);
+    box-shadow:var(--shadow-lg);
 }
 
-.stat-card:nth-child(1){
-    background:linear-gradient(135deg,#4361ee,#4895ef);
-}
-
-.card:nth-child(1){
-    border-radius:20px;
-}
-
-/* Individual Colors */
-
+/* Individual color tracks — richer, more considered gradients */
 .col-md-3:nth-child(1) .stat-card{
-    background:linear-gradient(135deg,#4361ee,#4895ef);
+    background:linear-gradient(135deg,#4338ca,#4895ef);
 }
-
 .col-md-3:nth-child(2) .stat-card{
-    background:linear-gradient(135deg,#06d6a0,#1b9aaa);
+    background:linear-gradient(135deg,#059669,#0d9488);
 }
-
 .col-md-3:nth-child(3) .stat-card{
-    background:linear-gradient(135deg,#ff9f1c,#ffbf69);
+    background:linear-gradient(135deg,#d97706,#f59e0b);
 }
-
 .col-md-3:nth-child(4) .stat-card{
-    background:linear-gradient(135deg,#ef476f,#ff5d8f);
+    background:linear-gradient(135deg,#e11d48,#fb7185);
 }
 
 .stat-card h2{
     color:white;
-    font-size:2rem;
-    font-weight:700;
+    font-size:2.15rem;
+    font-weight:800;
+    position:relative;
+    z-index:2;
 }
-
 .stat-card h6{
     color:white;
-    opacity:0.9;
+    opacity:0.92;
+    font-weight:600;
+    text-transform:uppercase;
+    font-size:0.72rem;
+    letter-spacing:0.9px;
+    position:relative;
+    z-index:2;
 }
 
 /* ==========================
    NORMAL CARDS
 ========================== */
-
 .card{
     border:none;
     border-radius:18px;
-    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+    background:var(--surface);
+    box-shadow:var(--shadow-sm);
+    border:1px solid var(--border-soft);
+    transition:box-shadow 0.3s ease, transform 0.3s ease;
+}
+.card:hover{
+    box-shadow:var(--shadow-md);
+}
+.card:nth-child(1){
+    border-radius:20px;
 }
 
 /* ==========================
    TABLES
 ========================== */
-
 .table{
     border-radius:15px;
     overflow:hidden;
+    margin-bottom:0;
 }
-
 .table thead{
-    background:#2563eb;
+    background:linear-gradient(90deg, var(--brand-1), var(--brand-2));
     color:white;
 }
-
+.table thead th{
+    font-family:'Sora', sans-serif;
+    font-weight:600;
+    font-size:0.82rem;
+    letter-spacing:0.4px;
+    text-transform:uppercase;
+    border:none;
+    padding:14px 16px;
+}
+.table tbody td{
+    padding:13px 16px;
+    color:var(--ink-700);
+    border-color:var(--border-soft);
+    vertical-align:middle;
+}
+.table-hover tbody tr{
+    transition:background 0.2s ease;
+}
 .table-hover tbody tr:hover{
-    background:#dbeafe;
+    background:var(--surface-tint);
 }
 
 /* ==========================
    BUTTONS
 ========================== */
-
 .btn{
-    border-radius:10px;
+    border-radius:11px;
     font-weight:600;
+    font-family:'Inter', sans-serif;
+    padding:8px 18px;
+    letter-spacing:0.2px;
+    transition:transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
 }
-
 .btn-success{
-    background:#10b981;
+    background:linear-gradient(135deg,#10b981,#059669);
     border:none;
+    box-shadow:0 6px 16px rgba(16,185,129,0.3);
 }
-
 .btn-primary{
-    background:#2563eb;
+    background:linear-gradient(135deg,#4361ee,#2563eb);
     border:none;
+    box-shadow:0 6px 16px rgba(37,99,235,0.3);
 }
-
 .btn-warning{
+    background:linear-gradient(135deg,#f59e0b,#d97706);
     color:white;
     border:none;
+    box-shadow:0 6px 16px rgba(217,119,6,0.3);
 }
-
 .btn-danger{
+    background:linear-gradient(135deg,#f43f5e,#e11d48);
     border:none;
+    box-shadow:0 6px 16px rgba(225,29,72,0.3);
 }
-
 .btn:hover{
     transform:translateY(-2px);
+    filter:brightness(1.05);
+}
+.btn:active{
+    transform:translateY(0);
 }
 
 /* ==========================
    FORMS
 ========================== */
-
 .form-control{
-    border-radius:10px;
-    padding:10px;
+    border-radius:11px;
+    padding:10px 14px;
+    border:1px solid var(--border-soft);
+    background:var(--surface);
+    transition:all 0.2s ease;
 }
-
 .form-control:focus{
-    border-color:#2563eb;
-    box-shadow:0 0 0 3px rgba(37,99,235,0.15);
+    border-color:var(--brand-2);
+    box-shadow:0 0 0 4px rgba(8,145,178,0.14);
+}
+label{
+    font-weight:600;
+    color:var(--ink-700);
+    font-size:0.88rem;
+    margin-bottom:6px;
 }
 
 /* ==========================
    CHART CARDS
 ========================== */
-
 canvas{
     max-height:350px;
 }
@@ -187,7 +306,6 @@ canvas{
 /* ==========================
    SECTIONS
 ========================== */
-
 .container,
 .container-fluid{
     padding-bottom:40px;
@@ -196,35 +314,53 @@ canvas{
 /* ==========================
    CUSTOM HEADER STRIP
 ========================== */
-
 .dashboard-banner{
-    background:linear-gradient(
-        135deg,
-        #2563eb,
-        #06b6d4
-    );
-
+    background:
+        radial-gradient(circle at 85% -10%, rgba(255,255,255,0.18), transparent 55%),
+        linear-gradient(135deg, var(--brand-1), var(--brand-2) 85%);
     color:white;
+    padding:28px 30px;
+    border-radius:22px;
+    margin-bottom:28px;
+    box-shadow:var(--shadow-lg);
+    position:relative;
+    overflow:hidden;
+}
+.dashboard-banner h2,
+.dashboard-banner h5{
+    color:white;
+}
 
-    padding:25px;
-
-    border-radius:20px;
-
-    margin-bottom:25px;
+/* ==========================
+   SCROLLBAR (subtle polish)
+========================== */
+::-webkit-scrollbar{
+    width:10px;
+    height:10px;
+}
+::-webkit-scrollbar-track{
+    background:transparent;
+}
+::-webkit-scrollbar-thumb{
+    background:rgba(67,56,202,0.25);
+    border-radius:10px;
+}
+::-webkit-scrollbar-thumb:hover{
+    background:rgba(67,56,202,0.4);
 }
 
 /* ==========================
    MOBILE
 ========================== */
-
 @media(max-width:768px){
-
     .stat-card{
         margin-bottom:15px;
     }
-
     h2{
         text-align:center;
     }
-
+    .dashboard-banner{
+        text-align:center;
+        padding:22px;
+    }
 }
